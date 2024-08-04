@@ -34,6 +34,9 @@ data = [
     {"sales": 100, "customers": 10},
     {"sales": 150, "customers": 20},
     {"sales": 200, "customers": 15},
+    {"sales": 180, "customers": 10},
+    {"sales": 320, "customers": 50},
+    {"sales": 250, "customers": 15},
 ]
 
 print(generate_report(data))
