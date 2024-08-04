@@ -1,20 +1,32 @@
-def generate_report(data):
-    # データの集計
+def calculate_totals(data):
     total_sales = 0
     total_customers = 0
     for record in data:
         total_sales += record['sales']
         total_customers += record['customers']
+    return total_sales, total_customers
 
-    # データの平均計算
-    average_sales = total_sales / len(data)
-    average_customers = total_customers / len(data)
+def calculate_averages(total_sales, total_customers, num_days):
+    average_sales = total_sales / num_days
+    average_customers = total_customers / num_days
+    return average_sales, average_customers
 
-    # レポート生成
+def create_report(total_sales, total_customers, average_sales, average_customers):
     report = f"Total Sales: {total_sales}\n"
     report += f"Total Customers: {total_customers}\n"
     report += f"Average Sales per Day: {average_sales:.2f}\n"
     report += f"Average Customers per Day: {average_customers:.2f}\n"
+    return report
+
+def generate_report(data):
+    # データの集計
+    total_sales, total_customers = calculate_totals(data)
+
+    # データの平均計算
+    average_sales, average_customers = calculate_averages(total_sales, total_customers, len(data))
+
+    # レポート生成
+    report = create_report(total_sales, total_customers, average_sales, average_customers)
 
     return report
 
